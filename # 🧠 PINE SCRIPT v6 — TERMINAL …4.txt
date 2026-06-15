@@ -1,0 +1,267 @@
+# 🧠 PINE SCRIPT v6 — TERMINAL FAILURE CLOSURE ONTOLOGY (COMPLETE MECHANISTIC COVERAGE)
+
+This is NOT a list of error messages.
+
+This is a **closed failure-space decomposition system**.
+
+Any Pine Script failure (present or future) MUST map into one of these invariant generators.
+
+---
+
+# 0. CLOSURE AXIOM
+
+All errors in Pine Script are projections of:
+
+F = (T, S, X, R, M, P)
+
+Where:
+
+- T = Type System State
+- S = Scope / Symbol Graph
+- X = Execution Model (temporal engine)
+- R = Runtime resource system
+- M = Memory/object lifecycle system
+- P = Parser / syntax lattice
+
+If a failure cannot be mapped into one of these:
+→ the model is underspecified (not Pine Script)
+
+---
+
+# 1. PARSER LATTICE FAILURES (P-CLASS)
+
+All CE syntax errors originate here.
+
+## 1.1 Structural tokenization collapse
+- missing operator adjacency
+- invalid newline injection
+- illegal character insertion
+- malformed expression tree
+- broken precedence chain
+
+## 1.2 Grammar invalidation
+- unmatched grouping symbols
+- invalid statement termination
+- illegal block construction
+- invalid function declaration shape
+- invalid script root structure
+
+## 1.3 Declaration lattice violation
+- multiple root declarations
+- missing root declaration
+- invalid directive placement
+- malformed argument list structure
+
+➡ These ALWAYS manifest as:
+CE101xx / CE102xx / CE100xx family
+
+---
+
+# 2. SYMBOL GRAPH FAILURE (S-CLASS)
+
+## 2.1 Resolution failures
+- undeclared identifier
+- forward reference violation
+- missing import resolution
+- namespace collision
+- ambiguous binding
+
+## 2.2 Scope topology collapse
+- local used as global
+- global mutated in restricted scope
+- invalid closure capture
+- lifetime mismatch
+
+## 2.3 Shadowing instability
+- duplicate identifiers
+- redefinition conflict
+- hidden variable override
+
+➡ Maps to:
+CE102xx / CE10095 / CE10272 variants
+
+---
+
+# 3. TYPE SYSTEM COLLAPSE (T-CLASS)
+
+This is the largest failure surface in Pine.
+
+## 3.1 Hard type mismatch
+- series vs simple mismatch
+- bool vs numeric mismatch
+- string vs numeric misuse
+
+## 3.2 NA propagation failure
+- NA assigned to strict type
+- NA used as control flow bypass
+- NA poisoning series state
+
+## 3.3 Qualifier violations
+- const mutated
+- simple used as series
+- series forced into simple context
+
+## 3.4 Object type violations
+- invalid field access
+- invalid method binding
+- invalid object instantiation
+- invalid history access on object
+
+## 3.5 Structural type collapse
+- tuple misuse in expression
+- tuple returned in scalar context
+- invalid destructuring assignment
+
+➡ Maps to:
+CE103xx + CE10123 + CE10173 clusters
+
+---
+
+# 4. EXECUTION MODEL FAILURE (X-CLASS)
+
+This is where Pine becomes non-deterministic or inconsistent.
+
+## 4.1 Temporal misalignment
+- intrabar vs close mismatch
+- timeframe desynchronization
+- replay divergence
+
+## 4.2 Series execution inconsistency
+- function not evaluated per bar
+- conditional execution skipping evaluation
+- partial recomputation
+
+## 4.3 Repaint generation
+- historical signal mutation
+- future data leakage (lookahead)
+- pivot instability
+
+## 4.4 Determinism failure
+- same input → different output across bars
+- inconsistent security() results
+
+➡ Maps to:
+CW20001–CW20010 + RW40001–RW40015 + NX70000
+
+---
+
+# 5. RUNTIME RESOURCE FAILURE (R-CLASS)
+
+## 5.1 Memory exhaustion
+- object limit exceeded
+- label/box/line overflow
+
+## 5.2 Execution saturation
+- too many calculations per bar
+- recursion or loop explosion
+- script timeout
+
+## 5.3 Allocation leak
+- unbounded object creation
+- orphaned graphical primitives
+
+## 5.4 Data exhaustion
+- request.security overload
+- missing data feed window
+- gap collapse
+
+➡ Maps to:
+RE30004–RE30020 + AX90000
+
+---
+
+# 6. MEMORY / OBJECT LIFECYCLE FAILURE (M-CLASS)
+
+## 6.1 Lifecycle violation
+- object created without destroy path
+- object mutated after invalidation
+
+## 6.2 State persistence error
+- var misuse across bars
+- unintended global persistence
+
+## 6.3 Reference invalidation
+- stale object pointer usage
+- deleted label/line access
+
+---
+
+# 7. SEMANTIC MODEL FAILURE (CORE ROOT CAUSE CLASS)
+
+This is the MOST IMPORTANT layer (not compiler-visible).
+
+## 7.1 Intent mismatch
+- human meaning ≠ machine logic
+
+## 7.2 Overloaded meaning
+- variable carries multiple semantic roles
+
+## 7.3 Hidden assumption injection
+- implicit repaint assumption
+- assumed determinism where none exists
+
+## 7.4 Temporal misunderstanding
+- treating series as scalar
+- treating confirmed bar as live
+
+## 7.5 Logical inversion collapse
+- nested condition flips meaning under NA
+
+## 7.6 Silent bypass logic
+- NA used as conditional escape hatch
+
+➡ Maps to:
+SG50000–SG50020 (core root cause layer)
+
+---
+
+# 8. CROSS-LAYER FAILURE INTERSECTIONS (CRITICAL)
+
+Real Pine failures are almost always intersections:
+
+## Examples:
+
+- T × X → repaint disguised as correct signal
+- S × T → undeclared identifier from type misbinding
+- P × S → syntax valid but symbol invalid
+- X × R → execution correct but resource crash
+- M × T → object lifecycle causes type corruption
+
+These are the **hardest class of Pine failures**.
+
+---
+
+# 9. COMPLETE FAILURE RESOLUTION AXIOM
+
+A Pine system is valid ONLY IF:
+
+✔ P-class = 0  
+✔ S-class = 0  
+✔ T-class = 0  
+✔ X-class = 0  
+✔ R-class = 0  
+✔ M-class = 0  
+✔ SG-class = explicitly resolved or eliminated  
+
+AND
+
+✔ no cross-class instability exists
+
+---
+
+# 10. WHY THIS IS THE TRUE “FULL COVERAGE”
+
+Because:
+
+- CE / CW / RE / RW are just **surface projections**
+- Pine compiler messages are **non-stable mappings**
+- internal failure causes are **mechanistic invariants**
+- every future unknown error MUST still map into P/S/T/X/R/M/SG
+
+So this is not a list.
+
+It is a **closed generative failure space**.
+
+---
+
+END OF TERMINAL COVERAGE MODEL

@@ -1,0 +1,366 @@
+# 🧠 PINE SCRIPT v6 FAILURE & GOTCHA CANONICAL MAP
+## FULL CE / CW / RE / RW + SEMANTIC FAILURE ONTOLOGY
+### Version: vΩ.ULTIMA.FAILURE.CANON.4.0
+
+---
+
+# 0. SYSTEM OVERVIEW
+
+All Pine Script failures fall into 6 meta-classes:
+
+1. CE — Compilation Errors (hard stop)
+2. CW — Compiler Warnings (non-fatal but destabilizing)
+3. RE — Runtime Errors (execution crash / undefined state)
+4. RW — Runtime Warnings (silent behavioral corruption)
+5. SG — Semantic Gotchas (logic correctness failures)
+6. SF — Silent Failures (no error, wrong output)
+
+---
+
+# 1. CE — COMPILATION ERROR ONTOLOGY (HARD FAIL)
+
+## 1.1 CE100xx — DECLARATION FAILURES
+
+- CE10243 → missing indicator/strategy/library
+- CE10095 → variable redeclared
+- CE10272 → undeclared identifier
+- CE10090 → invalid identifier naming
+- CE10097 → NA type mismatch assignment
+- CE10196 → invalid object field reference
+
+---
+
+## 1.2 CE101xx — SYNTAX & STRUCTURE FAILURES
+
+- CE10156 → end of line without continuation
+- CE10101 → non-bool condition in if
+- CE10163 → ternary returns tuple
+- CE10188 → plot in local scope
+- CE10013 → malformed syntax tree
+- CE10005 → invalid unicode character (→ — etc)
+- CE10159 → invalid type qualifier
+
+---
+
+## 1.3 CE1012x — TYPE SYSTEM FAILURES
+
+- CE10123 → type mismatch
+- CE10120 → invalid function parameter name/type
+- CE10125 → enum mismatch
+- CE10173 → const/simple/series mismatch
+- CE10072 → duplicate argument (e.g. title)
+
+---
+
+## 1.4 CE1015x — ASSIGNMENT / MUTATION FAILURES
+
+- CE10088 → global mutation inside function
+- CE10089 → incorrect assignment operator (= vs :=)
+- CE10152 → invalid method keyword
+- CE10171 → bool cannot default to na
+
+---
+
+## 1.5 CE1004x — RESOURCE LIMIT FAILURES
+
+- CE10041 → invalid max_bars_back
+- CE10041 → invalid object limits (lines/labels/boxes)
+
+---
+
+## 1.6 CE102xx — API SURFACE VIOLATIONS
+
+- invalid indicator() parameter (max_labels_back, etc.)
+- unknown function names
+- unknown namespaces
+- invalid enum inputs
+
+---
+
+# 2. CW — COMPILER WARNINGS (STRUCTURAL RISK)
+
+## 2.1 CW10002 — TEMPORAL EXECUTION INCONSISTENCY
+
+Caused by:
+
+- ta.crossover inside conditionals
+- ta.crossunder inside conditionals
+- ta.* functions not globally computed
+
+Effect:
+→ inconsistent bar-to-bar evaluation
+→ hidden repaint risk
+
+---
+
+## 2.2 CW10003 — DETERMINISM DEGRADATION
+
+Caused by:
+
+- atr/ema/sma computed conditionally
+- missing global series caching
+- inconsistent historical recomputation
+
+Effect:
+→ same input produces different internal state paths
+
+---
+
+## 2.3 CW10004 — LOOKAHEAD & SECURITY DRIFT
+
+Caused by:
+
+- request.security misuse
+- missing lookahead control
+- HTF/LTF mismatch
+
+Effect:
+→ future data leakage or misalignment
+
+---
+
+## 2.4 CW10005 — OBJECT LIFECYCLE WARNING
+
+Caused by:
+
+- excessive label/box creation
+- missing cleanup logic
+- accumulation over bars
+
+Effect:
+→ silent performance degradation
+
+---
+
+# 3. RE — RUNTIME ERROR ONTOLOGY (EXECUTION FAIL)
+
+## 3.1 RE200xx — EXECUTION FAILURES
+
+- array out-of-bounds
+- tuple unpack mismatch at runtime
+- NA propagation explosion
+- invalid runtime type coercion
+- division by zero (if not guarded)
+- runtime label/box exhaustion
+
+---
+
+## 3.2 RE201xx — SERIES EXECUTION FAILURES
+
+- mismatched series lengths
+- inconsistent historical indexing
+- undefined prior-bar references
+
+---
+
+## 3.3 RE202xx — SECURITY ENGINE FAILURES
+
+- request.security returning mismatched structure
+- HTF missing data fallback
+- repaint due to unresolved bar alignment
+
+---
+
+# 4. RW — RUNTIME WARNING ONTOLOGY (SILENT CORRUPTION)
+
+## 4.1 RW300xx — VISUAL MISLEADING OUTPUT
+
+- plots not aligned with logic execution
+- partial-bar updates misleading user interpretation
+- mislabeled signals due to state drift
+
+---
+
+## 4.2 RW301xx — SIGNAL DISTORTION
+
+- crossover signals not synchronized with confirmed state
+- lagging indicator misalignment
+- multiple triggers per logical event
+
+---
+
+## 4.3 RW302xx — PERFORMANCE DEGRADATION
+
+- excessive label/line creation
+- hidden O(n²) accumulation patterns
+- repeated recomputation of ta.* functions
+
+---
+
+## 4.4 RW303xx — STATE DESYNC WARNING
+
+- chart state ≠ computed state
+- historical vs realtime divergence
+- unconfirmed intrabar commits
+
+---
+
+# 5. SG — SEMANTIC GOTOCHAS (LOGIC ERRORS WITHOUT ERRORS)
+
+## 5.1 SG400xx — LOGIC MISINTERPRETATION
+
+- “trend” inferred from insufficient structure
+- indicator ≠ predictive validity
+- signal ≠ causality
+
+---
+
+## 5.2 SG401xx — FALSE DETERMINISM
+
+- assuming ta.* implies truth
+- treating crossover as event rather than condition
+- conflating smoothing with causation
+
+---
+
+## 5.3 SG402xx — TIMEFRAME FALLACY
+
+- LTF signal assumed valid in HTF context
+- HTF downsampling assumed equivalent
+
+---
+
+## 5.4 SG403xx — NORMALIZATION ERRORS
+
+- price normalization changes signal meaning
+- scaling without invariance correction
+
+---
+
+## 5.5 SG404xx — VISUAL BIAS
+
+- chart appearance interpreted as structure truth
+- color/shape mistaken for logic correctness
+
+---
+
+# 6. SF — SILENT FAILURES (MOST CRITICAL CLASS)
+
+No error is thrown.
+
+System behaves incorrectly.
+
+---
+
+## 6.1 SF500xx — REPAINT WITHOUT WARNING
+
+- signals appear valid historically
+- disappear or shift in realtime
+
+---
+
+## 6.2 SF501xx — PARTIAL EXECUTION STATE
+
+- only some branches evaluate per bar
+- inconsistent state updates
+
+---
+
+## 6.3 SF502xx — IMPLICIT NA PROPAGATION
+
+- missing values silently absorbed
+- logic continues on corrupted state
+
+---
+
+## 6.4 SF503xx — EVENT MISALIGNMENT
+
+- signals fire one bar early/late
+- execution mismatch with visual trigger
+
+---
+
+## 6.5 SF504xx — STRUCTURAL DRIFT
+
+- long-run divergence between expected vs actual behavior
+- accumulative small errors produce large deviation
+
+---
+
+# 7. ROOT FAILURE CLASSES (UNIVERSAL ORIGINS)
+
+## CLASS A — TYPE SYSTEM BREAKDOWN
+- CE10123
+- CE10173
+- CE10149
+
+---
+
+## CLASS B — TEMPORAL SYSTEM BREAKDOWN
+- CW10002
+- RE202xx
+- SF500xx
+
+---
+
+## CLASS C — EXECUTION GRAPH BREAKDOWN
+- undefined order of evaluation
+- conditional ta.* execution
+- hidden dependency chains
+
+---
+
+## CLASS D — RESOURCE LIFECYCLE BREAKDOWN
+- label/box overflow
+- memory accumulation
+- undeleted objects
+
+---
+
+## CLASS E — SEMANTIC MISALIGNMENT
+- signal ≠ event
+- indicator ≠ truth
+- smoothing ≠ causation
+
+---
+
+# 8. FULL INVARIANT GATE (PRE-EMISSION)
+
+A script is VALID ONLY IF:
+
+```
+CE = 0
+CW = 0 (or explicitly acknowledged)
+RE = 0
+RW = 0
+SG violations = 0
+SF risk = 0
+```
+
+AND ALSO:
+
+- all ta.* computed globally
+- all types valid in restricted system
+- all namespaces validated
+- all indicator() params canonical
+- all objects lifecycle-managed
+- no hidden repaint paths exist
+
+---
+
+# 9. HARD FAILURE RULE
+
+If ANY unknown behavior exists:
+
+→ DO NOT EMIT CODE  
+→ DO NOT APPROXIMATE  
+→ DO NOT INFER  
+→ HALT AND CLASSIFY
+
+---
+
+# 10. FINAL CONSTITUTION
+
+Pine Script correctness is NOT:
+
+- syntactic correctness
+- compilation success
+- absence of errors
+
+It is:
+
+> deterministic, replay-consistent, type-safe, temporally stable execution graph correctness
+
+---
+
+# END OF FULL FAILURE & GOTCHA CANONICAL MAP

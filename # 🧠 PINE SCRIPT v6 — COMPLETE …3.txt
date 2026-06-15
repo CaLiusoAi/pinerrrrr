@@ -1,0 +1,322 @@
+# 🧠 PINE SCRIPT v6 — COMPLETE CE / CW / RE / RW / SEMANTIC FAILURE ONTOLOGY (FULL EXPANDED CANON)
+
+This is a **terminal-level enumeration system** of all observable and latent failure classes in Pine Script v6 execution, compilation, and runtime behavior.
+
+It is structured as:
+
+- CE = Compilation Errors (hard stop)
+- CW = Compiler Warnings (structural instability)
+- RE = Runtime Errors (execution crash)
+- RW = Runtime Warnings (behavioral corruption)
+- SG = Semantic / Logical Gotchas (hidden failure)
+- PX = Pine Execution Model Violations (deep engine constraints)
+- NX = Non-determinism / Repaint classes
+- TX = Type System Collapse modes
+- AX = Allocation / Resource exhaustion modes
+
+---
+
+# 1. CE — COMPILATION ERRORS (FULL ATOMIC ENUMERATION)
+
+## 1.1 Syntax Kernel Failures (CE10100–CE10149)
+
+CE10100 — empty script (no executable statements)  
+CE10101 — non-bool conditional expression  
+CE10102 — missing operator between tokens  
+CE10103 — malformed expression chain  
+CE10104 — invalid ternary expression structure  
+CE10105 — incomplete function declaration block  
+CE10106 — end-of-line without continuation  
+CE10107 — unexpected token insertion  
+CE10108 — illegal newline in expression  
+CE10109 — unmatched parentheses  
+CE10110 — unmatched brackets  
+CE10111 — unmatched braces  
+CE10112 — invalid indentation block structure  
+CE10113 — missing expression after operator  
+CE10114 — trailing operator at EOL  
+CE10115 — invalid tuple syntax  
+CE10116 — invalid destructuring pattern  
+CE10117 — invalid switch expression structure  
+CE10118 — invalid if-block closure  
+CE10119 — invalid loop header  
+CE10120 — invalid argument count in built-in  
+CE10121 — invalid argument order  
+CE10122 — duplicate named argument  
+CE10123 — type mismatch in argument binding  
+CE10124 — invalid literal format  
+CE10125 — invalid escape sequence  
+CE10126 — invalid string concatenation context  
+CE10127 — malformed enum expression  
+CE10128 — invalid array literal structure  
+CE10129 — invalid map literal structure  
+CE10130 — invalid matrix construction  
+CE10131 — invalid series expression  
+CE10132 — invalid const assignment  
+CE10133 — invalid reassignment operator usage  
+CE10134 — invalid := usage scope violation  
+CE10135 — invalid = usage in mutable context  
+CE10136 — invalid function call nesting depth  
+CE10137 — invalid expression termination  
+CE10138 — missing return expression  
+CE10139 — invalid lambda expression  
+CE10140 — invalid arrow function syntax  
+CE10141 — invalid type annotation  
+CE10142 — invalid generic type usage  
+CE10143 — invalid namespace access  
+CE10144 — invalid dot-access chaining  
+CE10145 — invalid bracket operator usage  
+CE10146 — invalid operator overload  
+CE10147 — invalid macro expansion  
+CE10148 — invalid compile-time constant expression  
+CE10149 — invalid type keyword usage (“real”, etc.)
+
+---
+
+## 1.2 Declaration / Scope Kernel (CE10200–CE10249)
+
+CE10200 — undeclared identifier  
+CE10201 — forward reference  
+CE10202 — circular dependency  
+CE10203 — redefinition in same scope  
+CE10204 — shadowed global variable  
+CE10205 — shadowed local variable  
+CE10206 — invalid scope capture  
+CE10207 — illegal global mutation in function  
+CE10208 — missing initialization before use  
+CE10209 — invalid tuple unpack binding  
+CE10210 — invalid destructuring assignment  
+CE10211 — missing function definition  
+CE10212 — invalid recursive definition  
+CE10213 — invalid closure capture  
+CE10214 — invalid lifetime extension  
+CE10215 — invalid var redeclaration  
+CE10216 — invalid const redeclaration  
+CE10217 — invalid input redeclaration  
+CE10218 — invalid enum redeclaration  
+CE10219 — invalid library reference  
+CE10220 — missing namespace import  
+CE10221 — invalid namespace collision  
+CE10222 — invalid identifier resolution chain  
+CE10223 — invalid type inference failure  
+CE10224 — ambiguous identifier resolution  
+CE10225 — missing return binding  
+CE10226 — unreachable variable binding  
+CE10227 — invalid function overload resolution  
+CE10228 — invalid method binding context  
+CE10229 — invalid object instantiation scope  
+CE10230 — invalid series history binding  
+CE10231 — invalid object field access  
+CE10232 — invalid array scope mutation  
+CE10233 — invalid map scope mutation  
+CE10234 — invalid matrix scope mutation  
+CE10235 — invalid persistent state declaration  
+CE10236 — invalid var lifetime mismatch  
+CE10237 — invalid global-local bridging  
+CE10238 — invalid cross-script reference  
+CE10239 — invalid dependency graph resolution  
+CE10240 — missing symbol resolution  
+CE10241 — ambiguous symbol resolution  
+CE10242 — incomplete compilation unit  
+CE10243 — missing declaration statement  
+CE10244 — multiple indicator/strategy declarations  
+CE10245 — invalid script type conflict  
+CE10246 — invalid version directive placement  
+CE10247 — invalid runtime compilation model  
+CE10248 — invalid preprocessor assumption  
+CE10249 — invalid external dependency resolution
+
+---
+
+## 1.3 TYPE SYSTEM (CE10300–CE10349)
+
+CE10300 — series/simple mismatch  
+CE10301 — bool used as numeric  
+CE10302 — numeric used as bool  
+CE10303 — NA assignment to strict type  
+CE10304 — const mutation  
+CE10305 — invalid enum cast  
+CE10306 — invalid tuple return  
+CE10307 — invalid object type coercion  
+CE10308 — invalid history operator on object  
+CE10309 — invalid array type heterogeneity  
+CE10310 — invalid map key type  
+CE10311 — invalid matrix element type  
+CE10312 — invalid float/int coercion  
+CE10313 — invalid bool arithmetic  
+CE10314 — invalid string arithmetic  
+CE10315 — invalid series indexing type  
+CE10316 — invalid simple/series promotion  
+CE10317 — invalid type narrowing failure  
+CE10318 — invalid type widening failure  
+CE10319 — invalid generics instantiation  
+CE10320 — invalid type alias resolution  
+CE10321 — invalid union type resolution  
+CE10322 — invalid optional type handling  
+CE10323 — invalid NA propagation rule  
+CE10324 — invalid tuple type unpack mismatch  
+CE10325 — invalid object field type mutation  
+CE10326 — invalid enum value assignment  
+CE10327 — invalid method return type mismatch  
+CE10328 — invalid function signature mismatch  
+CE10329 — invalid lambda type capture  
+CE10330 — invalid series lifecycle type mismatch  
+CE10331 — invalid runtime type collapse  
+CE10332 — invalid implicit coercion failure  
+CE10333 — invalid strict typing violation  
+CE10334 — invalid type inference ambiguity  
+CE10335 — invalid recursive type resolution  
+CE10336 — invalid type redefinition  
+CE10337 — invalid type shadowing  
+CE10338 — invalid type constraint violation  
+CE10339 — invalid runtime type drift  
+CE10340 — invalid NA typing collapse  
+CE10341 — invalid tuple destructure type mismatch  
+CE10342 — invalid array covariance violation  
+CE10343 — invalid map covariance violation  
+CE10344 — invalid matrix covariance violation  
+CE10345 — invalid object covariance violation  
+CE10346 — invalid function type coercion  
+CE10347 — invalid series history type binding  
+CE10348 — invalid simple-series hybrid binding  
+CE10349 — invalid type qualifier misuse
+
+---
+
+# 2. CW — WARNINGS (FULL SYSTEM COVERAGE)
+
+CW20000 — missing global computation stability  
+CW20001 — non-global ta.crossover usage  
+CW20002 — non-global ta.sma/ema/dmi usage  
+CW20003 — inconsistent history dependency  
+CW20004 — implicit repaint risk  
+CW20005 — redundant computation per bar  
+CW20006 — performance-heavy loop detected  
+CW20007 — unstable pivot logic  
+CW20008 — request.security lookahead risk  
+CW20009 — implicit type coercion  
+CW20010 — floating NA instability  
+CW20011 — unused variable  
+CW20012 — unreachable branch  
+CW20013 — redundant condition  
+CW20014 — inefficient series recomputation  
+CW20015 — label overflow risk  
+CW20016 — table overflow risk  
+CW20017 — line object leak  
+CW20018 — box object leak  
+CW20019 — memory pressure warning  
+CW20020 — execution inefficiency
+
+---
+
+# 3. RE — RUNTIME ERRORS (FULL)
+
+RE30000 — array out of bounds  
+RE30001 — division by zero  
+RE30002 — NA cascade collapse  
+RE30003 — invalid runtime history access  
+RE30004 — object limit exceeded  
+RE30005 — memory exhaustion  
+RE30006 — invalid security gap  
+RE30007 — invalid series gap  
+RE30008 — runtime type collapse  
+RE30009 — execution timeout  
+RE30010 — infinite loop trap  
+RE30011 — invalid bar indexing runtime  
+RE30012 — label/table overflow crash  
+RE30013 — line/box overflow  
+RE30014 — invalid repaint runtime divergence  
+RE30015 — invalid runtime state mutation  
+RE30016 — invalid recursive runtime call  
+RE30017 — invalid runtime NA propagation  
+RE30018 — invalid data feed mismatch  
+RE30019 — runtime script desync  
+RE30020 — runtime execution halt
+
+---
+
+# 4. RW — RUNTIME WARNINGS (BEHAVIORAL)
+
+RW40000 — repainting signal detected  
+RW40001 — intrabar vs close mismatch  
+RW40002 — timeframe desync  
+RW40003 — unstable signal flip  
+RW40004 — pivot instability  
+RW40005 — signal flicker  
+RW40006 — strategy/indicator divergence  
+RW40007 — NA masking logic  
+RW40008 — partial bar execution mismatch  
+RW40009 — delayed state commit  
+RW40010 — inconsistent historical replay  
+RW40011 — cross-timeframe drift  
+RW40012 — execution jitter  
+RW40013 — label redraw instability  
+RW40014 — state desynchronization  
+RW40015 — signal hysteresis loss
+
+---
+
+# 5. SG — SEMANTIC GOTCHAS (FULL DEEP CLASS)
+
+SG50000 — hidden state mutation via := chains  
+SG50001 — ambiguous intent mapping  
+SG50002 — overloaded variable meaning  
+SG50003 — implicit repaint assumption  
+SG50004 — temporal ambiguity (intrabar vs close)  
+SG50005 — false determinism assumption  
+SG50006 — request.security misuse  
+SG50007 — NA as logic bypass  
+SG50008 — conditional execution skipping state  
+SG50009 — logic inversion via nested ternary  
+SG50010 — silent fallback logic corruption  
+SG50011 — multi-role variable collapse  
+SG50012 — hidden recursion in series  
+SG50013 — unstable signal thresholding  
+SG50014 — implicit global state coupling  
+SG50015 — execution order misinterpretation  
+SG50016 — phantom initialization bias  
+SG50017 — silent type coercion drift  
+SG50018 — hidden lookahead contamination  
+SG50019 — visual-only confirmation bias  
+SG50020 — compiler-vs-runtime divergence illusion
+
+---
+
+# 6. PX / NX / TX / AX EXTENSIONS
+
+PX60000 — execution graph ordering violation  
+NX70000 — deterministic repaint violation  
+TX80000 — type system collapse under NA  
+AX90000 — resource allocation exhaustion  
+
+---
+
+# 7. UNIVERSAL INVARIANT KILL RULE
+
+A script is INVALID if ANY of the following occur:
+
+- any CE exists
+- any CW indicates instability under composition
+- any RE occurs in execution path
+- any RW indicates behavioral drift
+- any SG is unresolved in logic layer
+- any PX/NX/TX/AX trigger fires
+
+---
+
+# 8. FINAL SYSTEM PRINCIPLE
+
+Pine Script failure is NOT syntax failure.
+
+It is:
+→ structural
+→ temporal
+→ type-based
+→ execution-order based
+→ semantic ambiguity based
+
+Compiler errors are only the surface trace.
+
+---
+
+END OF COMPLETE ONTOLOGY

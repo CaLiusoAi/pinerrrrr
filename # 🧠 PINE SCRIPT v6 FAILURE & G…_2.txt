@@ -1,0 +1,262 @@
+# 🧠 PINE SCRIPT v6 FAILURE & GOTCHA CANONICAL ONTOLOGY (CE / CW / RE / RW / SEMANTIC)
+
+This document is a **complete operational failure taxonomy + invariant enforcement map** for Pine Script v6 systems.
+It is designed as a **compiler-layer diagnostic ontology**, not human documentation.
+
+---
+
+# 0. CORE PRINCIPLE
+
+All Pine Script failures reduce to one of:
+
+1. **Type Authority Failure**
+2. **Scope/Lifetime Failure**
+3. **Temporal Execution Failure**
+4. **Namespace Resolution Failure**
+5. **Runtime State Mutation Failure**
+6. **Compiler Phase Ordering Failure**
+7. **Structural Syntax Failure**
+8. **Resource Exhaustion Failure**
+9. **Underspecified Behavior Collapse**
+
+---
+
+# 1. CE — COMPILATION ERRORS (HARD FAILURES)
+
+## 1.1 Syntax & Structure (CE101xx)
+
+CE10101 — invalid if condition (non-bool expression)  
+CE10102 — missing operand in expression  
+CE10103 — mismatched parentheses/brackets  
+CE10104 — invalid ternary structure  
+CE10105 — incomplete function declaration  
+CE10106 — end-of-line without continuation  
+CE10107 — unexpected token  
+CE10108 — invalid block indentation structure  
+CE10109 — missing required argument  
+CE10110 — invalid argument ordering  
+
+---
+
+## 1.2 Declaration & Scope (CE102xx)
+
+CE10201 — undeclared identifier  
+CE10202 — redefinition of existing variable  
+CE10203 — variable used before assignment  
+CE10204 — invalid scope access (local → global leak)  
+CE10205 — function not defined  
+CE10206 — missing library import reference  
+CE10207 — invalid namespace resolution  
+CE10208 — shadowed variable conflict  
+CE10209 — invalid tuple unpacking target  
+CE10210 — invalid destructuring assignment  
+
+---
+
+## 1.3 Type System (CE103xx)
+
+CE10301 — type mismatch (series vs simple)  
+CE10302 — type mismatch (bool vs float/int)  
+CE10303 — invalid NA assignment to strict type  
+CE10304 — const reassignment violation  
+CE10305 — invalid enum type cast  
+CE10306 — invalid tuple return in expression context  
+CE10307 — invalid object field access  
+CE10308 — invalid history reference on object field  
+CE10309 — invalid array type push  
+CE10310 — invalid map key type  
+
+---
+
+## 1.4 Built-in Function Contract (CE104xx)
+
+CE10401 — wrong argument count  
+CE10402 — wrong argument type  
+CE10403 — invalid named parameter  
+CE10404 — duplicate parameter in call  
+CE10405 — invalid function namespace (e.g. sma vs ta.sma)  
+CE10406 — invalid indicator/strategy declaration mismatch  
+CE10407 — invalid request.security tuple shape  
+CE10408 — invalid enum input assignment  
+CE10409 — invalid timeframe string format  
+CE10410 — missing required parameter  
+
+---
+
+## 1.5 Object Model Errors (CE105xx)
+
+CE10501 — method called on undefined object  
+CE10502 — invalid object instantiation  
+CE10503 — invalid field mutation operator (= instead of :=)  
+CE10504 — invalid label/table reference type  
+CE10505 — invalid series object history access  
+CE10506 — invalid method context scope  
+CE10507 — invalid object lifecycle call order  
+
+---
+
+# 2. CW — COMPILER WARNINGS (NON-FATAL BUT STRUCTURAL INSTABILITY)
+
+CW20001 — ta.crossover/crossunder not called on every bar  
+CW20002 — ta.sma/ema/dmi not computed globally  
+CW20003 — ta.lowest/highest/atr inconsistent execution scope  
+CW20004 — implicit series recomputation risk  
+CW20005 — unused variable detected  
+CW20006 — redundant calculation per bar  
+CW20007 — unstable history dependency  
+CW20008 — lookahead bias risk in request.security  
+CW20009 — implicit type coercion warning  
+CW20010 — performance heavy loop detected  
+
+---
+
+# 3. RE — RUNTIME ERRORS (EXECUTION FAILURE)
+
+RE30001 — array out of bounds  
+RE30002 — division by zero  
+RE30003 — invalid history access at runtime  
+RE30004 — label/table limit exceeded  
+RE30005 — line/box object overflow  
+RE30006 — runtime NA propagation cascade  
+RE30007 — invalid security data gap  
+RE30008 — runtime type collapse (NA poisoning)  
+RE30009 — execution timeout / resource limit  
+RE30010 — dynamic memory exhaustion  
+
+---
+
+# 4. RW — RUNTIME WARNINGS / BEHAVIORAL TRAPS
+
+RW40001 — repainting behavior detected  
+RW40002 — intrabar vs close mismatch  
+RW40003 — inconsistent historical vs live execution  
+RW40004 — unstable pivot detection  
+RW40005 — partial bar evaluation mismatch  
+RW40006 — indicator divergence from strategy execution  
+RW40007 — label redraw flicker instability  
+RW40008 — state desync across timeframes  
+RW40009 — silent NA fallback masking logic errors  
+RW40010 — conditional execution skipping state updates  
+
+---
+
+# 5. SEMANTIC / LOGICAL GOTCHAS (NON-CODED FAILURES)
+
+SG50001 — variable used before semantic definition  
+SG50002 — implicit intent mismatch (human vs compiler interpretation)  
+SG50003 — overloading of signal meaning (multi-role variable)  
+SG50004 — hidden state mutation through := chains  
+SG50005 — conflicting invariants across modules  
+SG50006 — incorrect assumption of determinism in request.security  
+SG50007 — false equivalence between repaint and confirmation  
+SG50008 — temporal ambiguity (intrabar vs confirmed bar)  
+SG50009 — logic inversion through nested condition collapse  
+SG50010 — silent logic bypass due to NA propagation  
+
+---
+
+# 6. PINE-SPECIFIC SILENT FAILURE MODES
+
+## 6.1 Temporal Collapse
+- repaint disguised as confirmed signal
+- historical consistency breaks under live execution
+
+## 6.2 Scope Leakage
+- local variables referenced globally
+- function state assumed persistent when it is not
+
+## 6.3 Execution Order Illusion
+- functions appear sequential but execute per-bar independently
+
+## 6.4 Series/Simple Confusion Layer
+- biggest hidden failure class in Pine v6
+
+## 6.5 Object Lifecycle Drift
+- label/box/table accumulation without destruction discipline
+
+## 6.6 Namespace Drift
+- ta.*, math.*, request.*, strategy.* misused interchangeably
+
+---
+
+# 7. ROOT INVARIANT SYSTEM (COMPILER KILL SWITCH RULESET)
+
+A script is INVALID if ANY of the following are true:
+
+## 7.1 Type Invariants
+- any series/simple mismatch unresolved
+- any NA assigned to strict type
+- any const mutation occurs
+
+## 7.2 Temporal Invariants
+- any repaint path exists
+- any cross-timeframe inconsistency exists
+- any non-deterministic bar dependency exists
+
+## 7.3 Scope Invariants
+- any undeclared identifier exists
+- any forward reference exists
+- any invalid closure over local state exists
+
+## 7.4 Execution Invariants
+- any plot/indicator function used in local scope
+- any runtime object exceeds lifecycle limits
+- any unsafe loop or recursion exists
+
+## 7.5 Structural Invariants
+- missing indicator()/strategy() declaration
+- multiple declaration statements exist
+- invalid argument schema in built-ins
+
+---
+
+# 8. GLOBAL FIX STRATEGY MAP
+
+## Fix Class A — TYPE REPAIR
+- enforce explicit casting
+- eliminate NA from strict variables
+- replace implicit coercion
+
+## Fix Class B — SCOPE REPAIR
+- lift all computations to global scope
+- remove local undeclared dependencies
+- enforce top-down declaration ordering
+
+## Fix Class C — TEMPORAL REPAIR
+- move all signals to global variables
+- separate computation from event execution
+
+## Fix Class D — EXECUTION REPAIR
+- move plotshape/plotchar to global scope
+- restrict label/box creation to conditional blocks only
+
+## Fix Class E — STRUCTURAL REPAIR
+- enforce single indicator() declaration
+- remove duplicate titles/parameters
+- normalize argument order and naming
+
+---
+
+# 9. UNIVERSAL ZERO-ERROR CONSTRAINT
+
+A Pine Script system is considered VALID only if:
+
+✔ no CE errors exist  
+✔ no CW warnings remain structurally significant  
+✔ no RW instability is present  
+✔ no SG contradictions exist  
+✔ all invariants pass deterministic replay  
+
+---
+
+# 10. FINAL COMPILER MODEL (ABSTRACT)
+
+INPUT → SEMANTIC NORMALIZATION → TYPE AUTHORITY CHECK → TEMPORAL VALIDATION → SCOPE RESOLUTION → EXECUTION GRAPH → EMISSION
+
+If any stage fails:
+→ HALT
+→ DO NOT GENERATE CODE
+
+---
+
+END OF CANONICAL FAILURE ONTOLOGY

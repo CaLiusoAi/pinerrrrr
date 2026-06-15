@@ -1,0 +1,310 @@
+# 🧠 PINE SCRIPT v6 — COMPLETE FAILURE & INVARIANT CLOSURE SPEC (CE / CW / RE / RW / SG / PX / R / M)
+
+This document is a single unified, non-fragmented compiler-grade specification for Pine Script v6 failure analysis, invariant enforcement, and zero-error gating.
+
+It defines a CLOSED SYSTEM: every possible compiler message, warning, runtime failure, or semantic error maps into a finite invariant class.
+
+---
+
+# 0. CLOSED SYSTEM AXIOM
+
+All Pine Script behavior (correct or failing) is generated from:
+
+F = { P, S, T, X, R, M, SG }
+
+Where:
+
+P = Parser / Syntax System  
+S = Symbol / Scope Graph  
+T = Type System  
+X = Execution / Temporal Engine  
+R = Runtime Resource System  
+M = Memory / Object Lifecycle System  
+SG = Semantic Intent Layer (human-machine mismatch)
+
+---
+
+# 1. UNIVERSAL FAILURE RULE (NON-NEGOTIABLE)
+
+Every possible error, warning, or runtime failure MUST map into at least one of:
+
+CE ∈ (P ∪ S ∪ T)  
+CW ∈ (P ∪ S ∪ T ∪ X)  
+RE ∈ (X ∪ R ∪ M)  
+RW ∈ (X ∪ SG)  
+
+If not mappable → system is not Pine Script behavior.
+
+---
+
+# 2. CE — COMPILATION ERRORS (HARD STOP)
+
+## 2.1 PARSER FAILURES (P)
+
+P1 — malformed token stream  
+P2 — invalid expression tree  
+P3 — broken operator adjacency  
+P4 — invalid newline continuation  
+P5 — unmatched parentheses/brackets/braces  
+P6 — invalid indentation block structure  
+P7 — illegal script root structure  
+P8 — invalid function declaration shape  
+P9 — invalid argument list structure  
+P10 — invalid literal format  
+P11 — invalid escape sequence  
+P12 — invalid operator placement  
+P13 — invalid statement termination  
+P14 — invalid ternary structure  
+P15 — invalid switch structure  
+P16 — invalid lambda expression  
+P17 — invalid array/matrix/map literal  
+P18 — invalid enum structure  
+P19 — invalid import directive placement  
+P20 — invalid script declaration order
+
+---
+
+## 2.2 SYMBOL / SCOPE FAILURES (S)
+
+S1 — undeclared identifier  
+S2 — forward reference  
+S3 — namespace collision  
+S4 — ambiguous symbol resolution  
+S5 — shadowed variable conflict  
+S6 — invalid scope capture  
+S7 — illegal global mutation  
+S8 — invalid closure binding  
+S9 — invalid lifetime reference  
+S10 — missing symbol resolution  
+S11 — invalid function resolution  
+S12 — invalid method binding context  
+S13 — invalid object reference  
+S14 — invalid history reference binding  
+S15 — invalid cross-scope access  
+S16 — invalid dependency resolution graph  
+S17 — circular dependency  
+S18 — invalid tuple binding target  
+S19 — invalid destructuring assignment  
+S20 — incomplete compilation unit
+
+---
+
+## 2.3 TYPE SYSTEM FAILURES (T)
+
+T1 — series/simple mismatch  
+T2 — bool/numeric mismatch  
+T3 — string/numeric mismatch  
+T4 — NA strict type violation  
+T5 — const mutation  
+T6 — invalid enum assignment  
+T7 — invalid tuple type mismatch  
+T8 — invalid object field access  
+T9 — invalid history operator usage  
+T10 — invalid type coercion  
+T11 — invalid function signature mismatch  
+T12 — invalid lambda type binding  
+T13 — invalid array type heterogeneity  
+T14 — invalid map key/value type  
+T15 — invalid matrix type mismatch  
+T16 — invalid series propagation type  
+T17 — invalid simple/series promotion  
+T18 — invalid type inference failure  
+T19 — invalid type narrowing  
+T20 — invalid type widening  
+T21 — invalid recursive type resolution  
+T22 — invalid optional type handling  
+T23 — invalid NA propagation model  
+T24 — invalid tuple return type context  
+T25 — invalid object lifecycle typing  
+T26 — invalid enum literal mismatch  
+T27 — invalid type alias resolution  
+T28 — invalid generics instantiation  
+T29 — invalid strict typing violation  
+T30 — invalid runtime type collapse
+
+---
+
+# 3. CW — COMPILER WARNINGS (STRUCTURAL INSTABILITY)
+
+CW1 — non-global ta.* computation  
+CW2 — inconsistent per-bar evaluation  
+CW3 — history dependency instability  
+CW4 — implicit repaint risk  
+CW5 — redundant computation per bar  
+CW6 — inefficient loop execution  
+CW7 — request.security lookahead risk  
+CW8 — implicit type coercion  
+CW9 — unused variable  
+CW10 — unreachable branch  
+CW11 — redundant condition  
+CW12 — unstable pivot logic  
+CW13 — label overflow risk  
+CW14 — table overflow risk  
+CW15 — line/box leak risk  
+CW16 — memory pressure warning  
+CW17 — execution inefficiency  
+CW18 — NA propagation instability  
+CW19 — recomputation redundancy  
+CW20 — cross-timeframe instability
+
+---
+
+# 4. RE — RUNTIME ERRORS
+
+RE1 — array out of bounds  
+RE2 — division by zero  
+RE3 — NA cascade collapse  
+RE4 — invalid history runtime access  
+RE5 — object limit exceeded  
+RE6 — memory exhaustion  
+RE7 — security data gap  
+RE8 — runtime type collapse  
+RE9 — execution timeout  
+RE10 — infinite loop execution  
+RE11 — label overflow  
+RE12 — table overflow  
+RE13 — line overflow  
+RE14 — box overflow  
+RE15 — runtime repaint divergence  
+RE16 — state mutation failure  
+RE17 — runtime desync  
+RE18 — invalid recursion runtime  
+RE19 — invalid bar indexing  
+RE20 — data feed mismatch
+
+---
+
+# 5. RW — RUNTIME WARNINGS
+
+RW1 — repaint detected  
+RW2 — intrabar vs close mismatch  
+RW3 — timeframe desync  
+RW4 — pivot instability  
+RW5 — signal flicker  
+RW6 — strategy/indicator divergence  
+RW7 — NA masking logic  
+RW8 — partial execution mismatch  
+RW9 — state desynchronization  
+RW10 — cross-timeframe drift  
+RW11 — execution jitter  
+RW12 — delayed commit instability  
+RW13 — signal hysteresis loss  
+RW14 — visual-only bias  
+RW15 — inconsistent replay behavior  
+RW16 — execution lag divergence  
+RW17 — unstable signal threshold  
+RW18 — silent fallback activation  
+RW19 — conditional skip instability  
+RW20 — bar state drift
+
+---
+
+# 6. SG — SEMANTIC FAILURE LAYER (ROOT CAUSE)
+
+SG1 — ambiguous intent mapping  
+SG2 — overloaded variable semantics  
+SG3 — implicit repaint assumption  
+SG4 — false determinism assumption  
+SG5 — temporal misunderstanding  
+SG6 — NA logic bypass assumption  
+SG7 — nested logic inversion  
+SG8 — multi-role variable collapse  
+SG9 — silent type drift expectation  
+SG10 — execution order misinterpretation  
+SG11 — phantom initialization bias  
+SG12 — lookahead contamination assumption  
+SG13 — visual bias mistaken as logic truth  
+SG14 — undefined behavior assumption  
+SG15 — incomplete invariant specification  
+SG16 — hidden state mutation expectation  
+SG17 — incorrect series interpretation  
+SG18 — misclassified signal confirmation  
+SG19 — inconsistent logic framing  
+SG20 — incorrect replay assumption
+
+---
+
+# 7. PX — EXECUTION MODEL FAILURES
+
+PX1 — incorrect bar sequencing  
+PX2 — cross-timeframe inconsistency  
+PX3 — series evaluation skipping  
+PX4 — non-deterministic recomputation  
+PX5 — request.security inconsistency  
+PX6 — temporal resolution mismatch  
+PX7 — replay divergence  
+PX8 — intrabar confirmation collapse  
+PX9 — execution graph disorder  
+PX10 — state propagation delay failure
+
+---
+
+# 8. R — RESOURCE FAILURES
+
+R1 — object limit exhaustion  
+R2 — memory leak  
+R3 — execution timeout  
+R4 — loop explosion  
+R5 — recursion overflow  
+R6 — allocation saturation  
+R7 — security request overload  
+R8 — data feed exhaustion  
+R9 — CPU budget exhaustion  
+R10 — rendering overflow
+
+---
+
+# 9. M — MEMORY / OBJECT LIFECYCLE FAILURES
+
+M1 — orphan object creation  
+M2 — invalid mutation after creation  
+M3 — stale reference access  
+M4 — deleted object reuse  
+M5 — lifecycle mismatch  
+M6 — persistent state corruption  
+M7 — var misuse across bars  
+M8 — improper object recycling  
+M9 — unmanaged history accumulation  
+M10 — dangling pointer equivalent access
+
+---
+
+# 10. FULL CLOSURE RULE
+
+Every failure MUST map as:
+
+ERROR → (P | S | T | X | R | M | SG)
+
+No exceptions exist.
+
+---
+
+# 11. ZERO-ERROR VALIDITY CONDITION
+
+A Pine system is valid ONLY IF:
+
+P = 0  
+S = 0  
+T = 0  
+X = 0  
+R = 0  
+M = 0  
+SG = minimized and explicit  
+
+AND:
+
+- no CW instability chains exist  
+- no RW drift exists under replay  
+- no cross-layer contradictions exist  
+
+---
+
+# 12. FINAL PRINCIPLE
+
+Pine Script errors are not independent messages.
+
+They are projections of a single constrained execution system under type, scope, temporal, and memory invariants.
+
+---
+
+END OF COMPLETE CLOSED FAILURE ONTOLOGY
